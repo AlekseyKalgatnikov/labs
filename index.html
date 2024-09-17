@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arctg Calculation</title>
+<script type="text/javascript">
+	function arctg() {
+		var x = Number(document.forms["form"].elements["x"].value);
+		var limit = Number(document.forms["form"].elements["limit"].value);
+		var sum = 0;
+
+	if (Math.abs(x) <= 1) {
+		for (var n = 0; n <= limit; n++) {
+		var term = ((-1) ** n) * (x ** (2 * n + 1)) / (2 * n + 1);
+		sum += term;
+	}
+		document.getElementById("result").innerText = sum;
+	} 
+	else {
+		document.getElementById("result").innerText = "Ошибка: |x| должно быть ≤ 1";
+		}
+	}
+</script>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<form id="form" onsubmit="event.preventDefault(); arctg();">
+				<input id="limit" type="text" name="limit" placeholder="Введите ограничитель (количество членов ряда)">
+				<input id="x" type="text" name="x" placeholder="Введите x (|x| ≤ 1)">
+				<input class="button" type="submit" value="Отправить">
+			</form>
+			<p id="result"></p>
+		</div>
+	</section>
+</body>
+</html>
